@@ -66,4 +66,21 @@ Windows Agent → Wazuh Manager (Kali Linux) → OpenSearch → Python Script �
 ### OpenSearch Security
 ![OpenSearch](<img width="929" height="193" alt="WazuhOpenSearch" src="https://github.com/user-attachments/assets/f99fdfc1-7c01-4c24-9398-6b4616c61476" />
 
+### OpenSearch Security
+<img width="929" height="193" alt="Wazuh OpenSearch" src="https://github.com/user-attachments/assets/f99fdfc1-7c01-4c24-9398-6b4616c61476" />
+
+### Python Automation Script (wazuh-AI-agent.py)
+<img width="959" height="538" alt="wazuh-AI-agent py" src="https://github.com/user-attachments/assets/765fa19b-8f6c-44f0-8776-58c8a2534c2e" />
+
+### Successful Pipeline Connection (Terminal Output)
+<img width="648" height="370" alt="Test-Connectivity" src="https://github.com/user-attachments/assets/9c5f003a-2796-40c0-8cd5-e153692b7c70" />
+
+### Windows Services (Wazuh Agent)
+<img width="957" height="539" alt="services" src="https://github.com/user-attachments/assets/2cf0463b-7b5a-4147-9972-ab9c6e306012" />
+
+### Event Viewer
+<img width="947" height="538" alt="Event Viewer" src="https://github.com/user-attachments/assets/f4c21ee5-f8d4-4de2-919c-dfe7fc6b2a4a" />
+
+### Registry Editor
+<img width="959" height="539" alt="Registry Editor" src="https://github.com/user-attachments/assets/ff27c6af-1563-499b-9d5c-908aa8474a08" />
 
