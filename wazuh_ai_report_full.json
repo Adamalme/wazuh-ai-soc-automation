@@ -1,0 +1,90 @@
+[
+  {
+    "severity": "informational",
+    "incident_type": "system health notification",
+    "mitre_attack": "",
+    "risk_score": 0,
+    "recommended_action": "No action required. Continue to monitor for any changes or abnormal activity.",
+    "analysis": "This Wazuh alert is an informational message indicating that Windows Defender's Antimalware platform is active and reporting a healthy state on the monitored host (agent: WIN-ENDPOINT-01, IP: 10.0.0.10). It confirms the endpoint protection is functioning properly. There is no indication of malicious activity or misconfiguration in this alert."
+  },
+  {
+    "severity": "High",
+    "incident_type": "Windows Application Error",
+    "mitre_attack": "T1499 (Endpoint Denial of Service), T1204 (User Execution) [potential]",
+    "risk_score": 7,
+    "recommended_action": "1. Investigate the affected system (WIN-ENDPOINT-01) for recent changes or unusual activity. 2. Review the application logs for details of the error (e.g., faulting application, module, exception code). 3. Correlate with other security events for signs of exploitation or malware activity. 4. Run malware scans and ensure all security patches are applied. 5. Isolate the system if evidence of compromise or lateral movement is found.",
+    "analysis": "A Windows application error was detected on host WIN-ENDPOINT-01 (IP: 10.0.0.10) at 2026-08-01T09:22:20.048Z. High severity is assigned because application errors, especially recurring or involving critical processes, can indicate malware execution, exploitation attempts, or system instability that adversaries may leverage as part of attacks. This alert should be correlated with other security data (e.g., command line events, process creation, network traffic) to assess whether it represents benign software misbehavior or a cybersecurity threat."
+  },
+  {
+    "severity": "High",
+    "incident_type": "Windows Application Error",
+    "mitre_attack": "T1499 (Endpoint Denial of Service), T1082 (System Information Discovery)",
+    "risk_score": 75,
+    "recommended_action": "1. Review the specific application error details in the Windows Event Logs on WIN-ENDPOINT-01 (10.0.0.10). 2. Determine if the error is due to legitimate application failure or indicative of malware/exploit activity. 3. Investigate for any signs of persistence, privilege escalation, or suspicious activities around the time of the alert. 4. If malicious activity is suspected, isolate the system and run a full malware scan. 5. Patch or update affected applications, and check system and network integrity.",
+    "analysis": "A high severity Wazuh alert indicates a Windows application error event on host WIN-ENDPOINT-01 (10.0.0.10) at 09:17 UTC. Application errors can occur due to a variety of causes, including software bugs, exploitation attempts, or resource exhaustion attacks. Given the high alert level (9/10), this warrants immediate investigation to rule out any ongoing or past compromise. Key risks include potential exploitation resulting in application or system instability, opportunity for privilege escalation, or pre-cursor to further attack stages. Without specific error log data, it is critical to correlate with surrounding events, anomalous user/process activity, and check for known vulnerabilities on running applications."
+  },
+  {
+    "severity": "Low",
+    "incident_type": "System Scheduled Task Notification",
+    "mitre_attack": "T1053.005 (Scheduled Task/Job: Scheduled Task)",
+    "risk_score": 1,
+    "recommended_action": "Review the context in which the task was scheduled. If initiated by authorized system updates or known IT operations, no action is needed. If unexpected or unauthorized, investigate further for potential persistence mechanisms or malicious activity.",
+    "analysis": "This alert indicates that the 'Software protection service' has scheduled a task successfully on the host WIN-ENDPOINT-01 (10.0.0.10). This is typically associated with legitimate Microsoft services (such as sppsvc for Windows licensing and protection). There is no immediate indication of malicious intent; however, attackers sometimes leverage system-sounding tasks to persist on endpoints. Cross-reference the creation time with known change windows and user activity. If anomalous, review recent account logins and scheduled task commands for suspicious activity."
+  },
+  {
+    "severity": "high",
+    "incident_type": "Application Crash / Possible Malicious Activity",
+    "mitre_attack": "T1499 (Endpoint Denial of Service), T1216 (System Script Proxy Execution) -- potentially relevant depending on context",
+    "risk_score": 8,
+    "recommended_action": "Investigate which application triggered the error. Correlate with other events on the affected agent around the same timeframe. Check for signs of malware execution, lateral movement, or abnormal user behavior. Review application crash dumps/logs for indicators of exploitation. Patch or update affected software if vulnerability is found.",
+    "analysis": "A Windows application error event with high severity was detected on agent WIN-ENDPOINT-01 (IP 10.0.0.10). Application errors at this level can be indicative of attempted exploitation, malicious code execution, or staged ransomware attacks, especially if seen in coordination with other abnormal behaviors. Without more context (such as process name, user, or error codes), this event should be treated as potentially malicious. Immediate triage is recommended to ensure this is not part of an active attack chain."
+  },
+  {
+    "severity": "High",
+    "incident_type": "Windows Application Error Event (Potential Malware or Exploit Activity)",
+    "mitre_attack": "T1059 (Command and Scripting Interpreter), T1216 (System Script Proxy Execution), T1569 (System Services), T1204 (User Execution)",
+    "risk_score": 8,
+    "recommended_action": "1. Immediately isolate the affected host (WIN-ENDPOINT-01; 10.0.0.10) from the network to prevent lateral movement. 2. Collect full event, application, and system logs for deeper investigation. 3. Analyze recent user and process activity on the host to identify suspicious behavior. 4. Perform a full malware and memory scan. 5. If compromise is confirmed, initiate incident response procedures including remediation and password resets.",
+    "analysis": "A high-level Windows application error on agent WIN-ENDPOINT-01 may indicate exploitation, malicious code execution, or an application crash caused by malware. As this type of event often aligns with tactics leveraged in intrusion scenarios (such as initial access, persistence, or defense evasion), it requires prompt analysis. Further investigation is needed to determine the precise process, user context, and potential impact. If correlated with other anomalous events or known IOCs, treat as a confirmed incident."
+  },
+  {
+    "severity": "High",
+    "incident_type": "Potential malware or exploitation activity",
+    "mitre_attack": ["T1546.012", "T1059"],
+    "risk_score": 7,
+    "recommended_action": "Immediately investigate the affected host for suspicious processes, anomalous application crashes, and potential persistence or privilege escalation attempts. Review application and system logs for related activity within the same timeframe. Isolate the host from the network if malicious behavior is confirmed.",
+    "analysis": "A Windows application error event with a high Wazuh alert level (9) was generated on agent WIN-ENDPOINT-01 (IP: 10.0.0.10). While application errors can occur for benign reasons, such a high-priority alert may indicate exploitation attempts, abuse of legitimate binaries (LOLBAS), or malicious code execution. Attackers frequently trigger application errors intentionally during privilege escalation or persistence operations. Given the severity, this incident warrants prompt investigation to identify the root cause and prevent lateral movement or data compromise."
+  },
+  {
+    "severity": "Low",
+    "incident_type": "Service Start Notification",
+    "mitre_attack": "",
+    "risk_score": 1,
+    "recommended_action": "No immediate action required. This is a standard notification indicating that the Wazuh server has started on the manager host. If this action was not expected, review system and user activity on the host.",
+    "analysis": "This alert is informational and indicates the Wazuh server process has been started on the specified agent. It is a normal event during startup, reboot, maintenance, or after an intentional service restart. If there is no corresponding change window or authorized activity, validate with system administrators to ensure the server start was legitimate, and review logs for unusual activity around this timestamp."
+  },
+  {
+    "severity": "Medium",
+    "incident_type": "Windows Logon Failure",
+    "mitre_attack": "T1078: Valid Accounts",
+    "risk_score": 40,
+    "recommended_action": "Review failed logon details in the Windows Event Log for WIN-ENDPOINT-01. Correlate with user activity and check for multiple failed attempts, which may indicate credential misuse or brute force attempts. Reset affected account credentials if suspicious activity is detected and monitor for further anomalies.",
+    "analysis": "This alert indicates a Windows audit failure event on the system WIN-ENDPOINT-01 (IP: 10.0.0.10). Audit failures are typically related to unsuccessful logon attempts or other access denials and may signal potential unauthorized access attempts. While this can result from user error, repeated audit failures can be an early sign of brute force attacks or attempts to use stolen credentials. Immediate review of event logs and related authentication attempts is necessary to assess the risk."
+  },
+  {
+    "severity": "Medium",
+    "incident_type": "Windows Authentication Failure",
+    "mitre_attack": "T1078: Valid Accounts",
+    "risk_score": 50,
+    "recommended_action": "Review the event details to determine if this was an expected authentication failure. If not, check for repeated failures from this source to detect possible brute force or credential stuffing attempts. Ensure strong password policies are in place and that the source host (WIN-ENDPOINT-01) is not compromised. If suspicious, block the source IP and begin incident response procedures.",
+    "analysis": "A Windows audit failure event was triggered on the agent WIN-ENDPOINT-01 (IP: 10.0.0.10) at 2026-08-01T09:00:14Z. This typically indicates a failed logon attempt or unauthorized access attempt. While a single event may be benign (such as a user mistyping a password), repeated or unexpected failures could signal malicious behavior. This should be correlated with other events (e.g., logon attempts, account lockouts) to determine if further action is necessary."
+  },
+  {
+    "severity": "Medium",
+    "incident_type": "Windows Audit Failure",
+    "mitre_attack": "TA0006 (Credential Access), TA0005 (Defense Evasion)",
+    "risk_score": 40,
+    "recommended_action": "Review the relevant Windows Event Logs on host WIN-ENDPOINT-01 (10.0.0.10) around the incident time for specific failure reasons. Determine if this relates to failed logon attempts, privilege misuse, or suspicious activity. Verify if this was a legitimate user error or a potential brute-force or enumeration attempt. If malicious activity is suspected, investigate the source and take measures such as blocking the offending account/IP or enforcing password changes.",
+    "analysis": "This alert signifies a Windows Audit Failure event detected by Wazuh on host WIN-ENDPOINT-01 (10.0.0.10). Audit failures can indicate failed logon attempts or access denial to sensitive resources, which may be due to user error or potential unauthorized access attempts. Although a single event may not indicate compromise, frequent or patterned failures may suggest credential-based attacks or enumeration activity. Continuous monitoring and correlation with other events are advised."
+  }
+]
