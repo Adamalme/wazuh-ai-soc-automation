@@ -19,10 +19,8 @@ analyze each threat.
 - OpenAI GPT
 - MITRE ATT&CK Framework
 
-##  Architecture
+## Architecture
 <img width="1440" height="700" alt="image" src="https://github.com/user-attachments/assets/6b5e5c28-f6b7-46a4-857a-050c4c169b7a" />
-
-
 
 ## Setup
 - Wazuh Manager running on Linux (tested on Kali)
@@ -43,6 +41,7 @@ The AI analyzer produces detailed security reports like this:
 - 25 alerts analyzed automatically
 - 8 High severity threats detected
 - 6 Medium severity threats detected
+- 11 Low severity alerts
 - Full JSON report generated
 
 ## Security Testing: Prompt Injection
@@ -55,14 +54,13 @@ Alert data comes from untrusted sources, so an attacker could hide instructions 
 - The AI sometimes over-scores benign events. In the sample above, it mapped a routine application crash to T1499 (Endpoint Denial of Service). AI output is a triage aid, not a final verdict; a human analyst should confirm high-risk findings.
 - Next improvement: give the model more alert context and add rules that downgrade known-benign event types.
 
-
 ## Screenshots
 
 ### File Integrity Monitoring
 <img width="956" height="533" alt="File Integrity Monitoring" src="https://github.com/user-attachments/assets/83196068-8944-4f8e-a836-d2e2cd20e030" />
 
 ### Malware Detection
-<img width="956" height="536" alt="Malware Detection" src="https://github.com/user-attachments/assets/7891c410-5172-4f67-b5e3-81783f8ba95c" /> 
+<img width="956" height="536" alt="Malware Detection" src="https://github.com/user-attachments/assets/7891c410-5172-4f67-b5e3-81783f8ba95c" />
 
 ### MITRE ATT&CK Events
 <img width="958" height="533" alt="MITRE ATT CK Events" src="https://github.com/user-attachments/assets/ea9799a3-cc74-4b65-94b6-8f221de1e1f0" />
@@ -74,10 +72,7 @@ Alert data comes from untrusted sources, so an attacker could hide instructions 
 <img width="951" height="317" alt="wazuh_threat_hunting_alerts" src="https://github.com/user-attachments/assets/5673c088-9eb6-4649-8666-a5f36d1b646a" />
 
 ### Sigma Rules Backend
-<img width="953" height="379" alt="sigma rule " src="https://github.com/user-attachments/assets/d5cdd7ad-47c8-4738-bf00-30528fce13a7" />
-
-### OpenSearch Security
-<img width="929" height="193" alt="WazuhOpenSearch" src="https://github.com/user-attachments/assets/f99fdfc1-7c01-4c24-9398-6b4616c61476" />
+<img width="953" height="379" alt="sigma rule" src="https://github.com/user-attachments/assets/d5cdd7ad-47c8-4738-bf00-30528fce13a7" />
 
 ### OpenSearch Security
 <img width="929" height="193" alt="Wazuh OpenSearch" src="https://github.com/user-attachments/assets/f99fdfc1-7c01-4c24-9398-6b4616c61476" />
@@ -96,4 +91,3 @@ Alert data comes from untrusted sources, so an attacker could hide instructions 
 
 ### Registry Editor
 <img width="959" height="539" alt="Registry Editor" src="https://github.com/user-attachments/assets/ff27c6af-1563-499b-9d5c-908aa8474a08" />
-
